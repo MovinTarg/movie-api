@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Movie Lookup:</h1>
+<h4>@ViewBag.movieTitle</h4>
+<form action="/{movie_search}" method="POST">
+    <div class="form-group">
+        <label for="movie_search">Search for a movie:</label>
+        <input class="form-control" type="text" name="movie_search">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+@{
+    if(ViewBag.Movies != null)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Rating</th>
+                    <th>Release Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach(var movie in ViewBag.Movies)
+            {
+                string dtValue =
+                (movie.ReleaseDate == default(DateTime))
+                ? "Release Date Unavailable"
+                : movie.ReleaseDate.ToString("D");
+
+                <tr>
+                    <td>@movie.Title</td>
+                    <td>@movie.Rating</td>
+                    <td>@dtValue</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {   
+        <h1>GO SEARCH FOR SOME MOVIES!</h1>
+    }
+}
