@@ -6,6 +6,6 @@ namespace movie_api
     {
         public string Title {get;set;}
         public float Rating {get;set;}
-        public DateTime ReleaseDate {get;set;}
+        public string ReleaseDate {get;set;}
     }
 }

@@ -32,18 +32,18 @@ namespace movie_api
                     var MovieList = new List<Movie>();
                     foreach(var movie in ListResults)
                     {
-                        bool NoReleaseDate = (movie["release_date"].Value<string>() == "");
+                        // bool NoReleaseDate = (movie["release_date"].Value<string>() == "");
 
-                        DateTime theReleaseDate = 
-                            (NoReleaseDate) 
-                            ? default(DateTime)
-                            : Convert.ToDateTime(movie["release_date"].Value<string>());
+                        // DateTime theReleaseDate = 
+                        //     (NoReleaseDate) 
+                        //     ? default(DateTime)
+                        //     : Convert.ToDateTime(movie["release_date"].Value<string>());
 
                         MovieList.Add(new Movie()
                         {
                             Title = movie["title"].Value<string>(),
                             Rating = movie["vote_average"].Value<float>(),
-                            ReleaseDate = theReleaseDate
+                            ReleaseDate = movie["release_date"].Value<string>()
                         });
                     }
                     // Finally, execute our callback, passing it the response we got.

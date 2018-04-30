@@ -12,7 +12,7 @@
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
 @{
-    if(ViewBag.Movies != null)
+    if(ViewBag.Movies.Count > 1)
     {
         <table class="table table-bordered">
             <thead>
@@ -25,15 +25,15 @@
             <tbody>
             @foreach(var movie in ViewBag.Movies)
             {
-                string dtValue =
-                (movie.ReleaseDate == default(DateTime))
-                ? "Release Date Unavailable"
-                : movie.ReleaseDate.ToString("D");
+                // string dtValue =
+                // (movie.release_date == "")
+                // ? "Release Date Unavailable"
+                // : movie.release_date.ToString("D");
 
                 <tr>
-                    <td>@movie.Title</td>
-                    <td>@movie.Rating</td>
-                    <td>@dtValue</td>
+                    <td>@movie["title"]</td>
+                    <td>@movie["rating"]</td>
+                    <td>@movie["release_date"]</td>
                 </tr>
             }
             </tbody>

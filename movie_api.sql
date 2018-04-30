@@ -20,8 +20,8 @@ USE `movie_api` ;
 CREATE TABLE IF NOT EXISTS `movie_api`.`movies` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NULL,
-  `rating` INT NULL,
-  `release` VARCHAR(255) NULL,
+  `rating` FLOAT NULL,
+  `release_date` DATETIME NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
   PRIMARY KEY (`id`))
